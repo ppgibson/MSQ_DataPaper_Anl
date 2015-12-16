@@ -29,11 +29,11 @@
 
 # Define directory paths
   # R code
-    DirCode <- "H:/DATA/Great Lakes Files/R Projects/MSQ_DataPaper/Code/"
+    DirCode <- "H:/DATA/Great Lakes Files/R Projects/MSQ_DataPaper_Anl/"
   # Data (input files and also write.table)
-    DirData <- "H:/DATA/Great Lakes Files/R Projects/MSQ_DataPaper/Data/"
+    DirData <- "H:/DATA/Great Lakes Files/R Projects/MSQ_DataPaper_Anl/Data/"
   # Output, temporary only, files may be overwitten on re-execution
-    DirOut <- "H:/DATA/Great Lakes Files/R Projects/MSQ_DataPaper/Output/"
+    DirOut <- "H:/DATA/Great Lakes Files/R Projects/MSQ_DataPaper_Anl/Output/"
 
 # Set WD
     setwd(DirData)
