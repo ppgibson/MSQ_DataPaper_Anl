@@ -31,7 +31,7 @@
 # Basic plot (data points plus reg line for each year)
   base.spidplot <- ggplot(data=means.nozero, aes(x=Araneid, y=Tetragnathid)) +
     geom_point(aes(shape=factor(sample_year), size=factor(sample_year))) + 
-    geom_smooth(aes(linetype=factor(sample_year)), method=lm, se=FALSE, color="black") +
+    geom_smooth(aes(linetype=factor(sample_year)), method=lm, se=FALSE, color="black", size=0.5) +
     scale_shape_manual(values=c(0,19,8), name="Year") +
     scale_linetype_manual(values=c(2,4,5)) +
     scale_size_manual(values=c(2.5,3.50,3), guide="none") + 
@@ -41,7 +41,8 @@
     theme_bw() + 
     theme(panel.grid.major=element_blank(),
           panel.grid.minor=element_blank(),
-          legend.key=element_rect(color=NA))  #remove gray border around legend symbols
+          legend.key=element_rect(color=NA),  #remove gray border around legend symbols
+          legend.key.width=unit(2, "cm"))    #make linetypes in legend longer so pattern is visible.
   #         panel.border=element_blank(),
   #         axis.line=element_line(color="black"), )
     
@@ -71,7 +72,8 @@
     spidplot <- 
       spidplot +  
       geom_point(data=means.nona[means.nona$Tetragnathid==0 | means.nona$Araneid==0, ], 
-                 shape=19, color="grey", size=3.5) 
+                 shape=19, color="grey", size=3.5) +
+      coord_cartesian(xlim=c(20, 500), ylim=c(20, 550))  #to avoid lots of extra space past 0
  
 
 ## Print pdf files
@@ -80,12 +82,25 @@
 ## < Correlations_SpidVsSpid.R >.
 
 # Log plot (the main-text figure)
+  # PDF for easy viewing
   pdf(file=paste(DirOut, "Fig_SpidVsSpid_LogScale.pdf", sep=""), width=8, height=6)
     log.spidplot
   dev.off()
 
+  # SVG for inskscape
+  svg(file=paste(DirOut, "Fig_SpidVsSpid_LogScale.svg", sep=""), width=8, height=6)
+    log.spidplot
+  dev.off()
+
 # Untransformed axes (possible appendix figure)
+  # PDF for easy viewing
   pdf(file=paste(DirOut, "Fig_SpidVsSpid_BaseScale.pdf", sep=""), width=8, height=6)
     spidplot
   dev.off()
+
+  # SVG for Inkscape
+  svg(file=paste(DirOut, "Fig_SpidVsSpid_BaseScale.svg", sep=""), width=8, height=6)
+    spidplot
+  dev.off()
+
 #####################################################################################
