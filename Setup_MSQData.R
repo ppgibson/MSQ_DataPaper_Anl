@@ -21,22 +21,23 @@
   library(dplyr)
   library(reshape2)
   library(ggplot2)
-#   library(gridExtra)
+  library(grid)
+  library(gridExtra)
+  library(scales)
 #   library(RColorBrewer)
-#   library(scales)
 #   library(vegan)
 #   library(devEMF)   # for printing .emf format plots
 
 # Define directory paths
   # R code
-    DirCode <- "H:/DATA/Great Lakes Files/R Projects/MSQ_DataPaper_Anl/"
+    DirCode <- "H:/DATA/Great Lakes Files/MS_MSQDataPaper/MSQ_DataPaper_Anl/"
   # Data (input files and also write.table)
-    DirData <- "H:/DATA/Great Lakes Files/R Projects/MSQ_DataPaper_Anl/Data/"
+    DirData <- "H:/DATA/Great Lakes Files/MS_MSQDataPaper/MSQ_DataPaper_Anl/Data/"
   # Output, temporary only, files may be overwitten on re-execution
-    DirOut <- "H:/DATA/Great Lakes Files/R Projects/MSQ_DataPaper_Anl/Output/"
+    DirOut <- "H:/DATA/Great Lakes Files/MS_MSQDataPaper/MSQ_DataPaper_Anl/Output/"
 
 # Set WD
-    setwd(DirData)
+    setwd(DirOut)
 
 
 # Read in data
