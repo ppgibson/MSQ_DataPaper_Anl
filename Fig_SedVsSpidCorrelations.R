@@ -80,7 +80,7 @@
   wetplot <- baseplot +       
         geom_point(aes(x=pcb.tocnorm, y=spid.pcb, fill=category, shape=location), color="black", size=3.5) +
         geom_smooth(aes(x=pcb.tocnorm, y=spid.pcb), 
-                    method=lm, se=FALSE, color="black") + 
+                    method=lm, se=FALSE, color="black", size=0.5, lty=5) + 
         geom_point(data=means.zero, 
                      aes(x=pcb.tocnorm, y=spid.pcb), shape=24, fill="grey", size=4) + #the zero points; they show up as tiny pts on x-axis, will need to fix this in inkscape.
         xlab(toc.label) + ylab(wet.label)
@@ -95,7 +95,7 @@
   lipplot <- baseplot +       
         geom_point(aes(x=pcb.tocnorm, y=pcb.lipidnorm, fill=category, shape=location), color="black", size=3.5) +
         geom_smooth(aes(x=pcb.tocnorm, y=pcb.lipidnorm), 
-                    method=lm, se=FALSE, color="black") + 
+                    method=lm, se=FALSE, color="black", size=0.5, lty=5) + 
         geom_point(data=means.zero, 
                      aes(x=pcb.tocnorm, y=pcb.lipidnorm), shape=24, fill="grey", size=4) + #the zero points; they show up as tiny pts on x-axis, will need to fix this in inkscape.
         xlab(toc.label) + ylab(lip.label)
@@ -110,7 +110,7 @@
   dryplot <- baseplot +       
         geom_point(aes(x=sed.pcb, y=pcb.lipidnorm, fill=category, shape=location), color="black", size=3.5) +
         geom_smooth(aes(x=sed.pcb, y=pcb.lipidnorm), 
-                    method=lm, se=FALSE, color="black") + 
+                    method=lm, se=FALSE, color="black", size=0.5, lty=5) + 
         geom_point(data=means.zero, 
                      aes(x=sed.pcb, y=pcb.lipidnorm), shape=24, fill="grey", size=4) + #the zero points; they show up as tiny pts on x-axis, will need to fix this in inkscape.
         xlab(dry.label) + ylab(lip.label)
@@ -137,17 +137,29 @@
   # extract elements 1, 2, and 3 of lg to draw plots (using grid.draw)  
 
 # Panel A: wet wt vs TOC-norm
-  pdf(file=paste(DirOut, "Fig_SedVsSpid_A_WetTOC.pdf", sep=""), width=8, height=6)
+  pdf(file=paste(DirOut, "Fig_SedVsSpid_A_WetTOC.pdf", sep=""), width=8, height=5)
+    grid.draw(lg[[1]])
+  dev.off()
+
+  svg(file=paste(DirOut, "Fig_SedVsSpid_A_WetTOC.svg", sep=""), width=8, height=5)
     grid.draw(lg[[1]])
   dev.off()
 
 # Panel B: lip-norm wt vs TOC-norm
-  pdf(file=paste(DirOut, "Fig_SedVsSpid_B_LipTOC.pdf", sep=""), width=8, height=6)
+  pdf(file=paste(DirOut, "Fig_SedVsSpid_B_LipTOC.pdf", sep=""), width=8, height=5)
+    grid.draw(lg[[2]])
+  dev.off()
+
+  svg(file=paste(DirOut, "Fig_SedVsSpid_B_LipTOC.svg", sep=""), width=8, height=5)
     grid.draw(lg[[2]])
   dev.off()
 
 # Panel 'C': lip-norm vs dry wt
-  pdf(file=paste(DirOut, "Fig_SedVsSpid_C_LipDry.pdf", sep=""), width=8, height=6)
+  pdf(file=paste(DirOut, "Fig_SedVsSpid_C_LipDry.pdf", sep=""), width=8, height=5)
+    grid.draw(lg[[3]])
+  dev.off()
+
+  svg(file=paste(DirOut, "Fig_SedVsSpid_C_LipDry.svg", sep=""), width=8, height=5)
     grid.draw(lg[[3]])
   dev.off()
 
